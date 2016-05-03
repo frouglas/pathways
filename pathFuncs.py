@@ -21,11 +21,12 @@ def readCSVFile(filePath):
     values = []
     thisConfig = configs()
     with open(filePath) as csvfile:
-        firstRow = 0
+        firstRow = 1
         fileRead = csv.reader(csvfile, delimiter=',')
         for row in fileRead:
-            if firstRow == 0:
-                headings = fileRead
+            if firstRow == 1:
+                headings = row
+                firstRow = 0
             else:
                 values.append(fileRead)
     return thisConfig
